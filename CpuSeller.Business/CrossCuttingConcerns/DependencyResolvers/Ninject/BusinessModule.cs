@@ -1,6 +1,7 @@
 ﻿using CpuSeller.Business.Abstract;
 using CpuSeller.Business.Concrete;
 using CpuSeller.DataAccessLayer.Abstract;
+using CpuSeller.DataAccessLayer.Concrete.ADONET;
 using CpuSeller.DataAccessLayer.Concrete.EntityFramework;
 using Ninject.Modules;
 using System;
@@ -14,7 +15,9 @@ namespace CpuSeller.Business.CrossCuttingConcerns.DependencyResolvers.Ninject
         public override void Load()
         {
             Bind<ICpuService>().To<CpuManager>().InSingletonScope();
-            Bind<ICpuDal>().To<EfCpuDal>().InSingletonScope();
+            Bind<ICpuDal>().To<AdoCpuDal>().InSingletonScope();
+
+            
         }
     }
 }
